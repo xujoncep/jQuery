@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewData["Title"] = "Selector";
+}
+
+<h1>Selector</h1>
+
+<div>
+    @* <h1 id="item"> Welcome to Id</h1>
+    <h1 class="item1">Welcome to Class</h1> *@
+    
+</div>
+@* <hr />
+<input class="btn btn-danger" type="button" value="check" id="btn" /> *@
+
+<div class="">
+    @* <ol id="item">
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ol>
+
+    <ol id="item1">
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ol> *@
+</div>
+
+<div>
+   @*  <h1>Heading one</h1>
+    <h1>Heading two</h1>
+    <h1>Heading three</h1>
+    <h1>Heading four</h1> *@
+</div>
+<hr />
+
+
+<h1 id="item">Welcome to asp</h1>
+
+<div class="d-flex justify-content-between">
+@*     <input class="btn btn-danger" type="button" value="hide" id="btn1" />
+    <input class="btn btn-danger" type="button" value="show" id="btn2" />
+    <input class="btn btn-danger" type="button" value="show&hide" id="btn3" /> *@
+</div>
+
+<div class="d-flex justify-content-center">
+    <input type="text" id="firstNumber"  placeholder="Enter first number" />
+    <input type="text" id="secondNumber" placeholder="Enter Second number" />
+    <button class="btn btn-danger" id="add">Add</button>
+</div>
+
+<div id="result">
+
+</div>
+
+<hr />
+
+<div id="divfade">
+    <h1>This is a Fade </h1>
+    <p>This is a paragraaph</p>
+</div>
+<br />
+<button id="btnfadein" class="btn btn-danger">FadeIn</button>
+<button id="btnfadeout" class="btn btn-danger">FadeOut</button>
+<button id="btnfadeto" class="btn btn-danger">FadeTo</button>
+<button id="btnfadetoggle" class="btn btn-danger">FadeInOut</button>
+
+<hr />
+
+<div>
+    <h1 id="h1">This is a <b> content </b> </h1>
+    <p id="p1">This is a paragraaph</p>
+</div>
+
+<a id="content" class="btn btn-danger">Content</a>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+
+        //alert('hey');
+        //selector
+        // $("#btn").click(function () {
+
+        //     $("#item").css("color", "red");
+        //     $(".item1").css('font-size', '60px');
+        //     $('h1').css('font-family', 'cooper');
+        //     $('*').css('background-color', 'green');
+        //     $('div #item li').css('font-weight', 'bold');
+        //     $("#item, #item1").css('font-weight', 'bold');
+        //     $('div h1:even').css('background-color', 'aqua');
+        //     $('div h1:eq(2)').css('background-color', 'aqua');
+        //  });
+
+         //hide show and toggle has two argument (speed,callback)
+        // $("#btn1").click(function () {
+        //     $('#item').hide(1000, function () {
+        //         alert('text hide complete');
+        //     });
+        // });
+
+        // $("#btn2").click(function () {
+        //     $('#item').show();
+        // });
+
+        // $("#btn3").click(function () {
+        //     $('#item').toggle('slow');
+        // });
+
+        
+        //Mouse event
+        // $("#btn3").click(function () {
+        //     $('#item').toggle('slow');
+        // });
+       
+        // $("#btn3").dblclick(function () {
+        //     $('#item').toggle('slow');
+        // });
+
+        // $("#btn3").hover(function () {
+        //     $('#item').toggle('slow');
+        // });
+
+        // $("#btn3").contextmenu(function () {
+        //     $('#item').toggle('slow');
+        // });
+        // $("#btn1").mouseenter(function () {
+        //     $('#item').hide('slow');
+        // });
+
+        // $("#btn1").mouseleave(function () {
+        //     $('#item').hide('slow');
+        // });
+
+        // $("#btn1").on({
+        //     mouseenter: function () {
+        //      $('#item').css('background-color','aqua')
+        //     },
+        //     dblclick: function () {
+        //         $('#item').css('font-family', 'cooper')
+        //     },
+        //     mouseleave: function () {
+        //         $('#item').css('font-size', '70px')
+        //     },
+        // });
+
+        //val and text method 
+
+        $('#add').click(function () {
+
+            var num1 = parseInt($('#firstNumber').val());
+            console.log(num1);
+
+            var num2 =parseInt($('#secondNumber').val());
+            console.log(num2);
+
+            if(num1 == '' || num2 == '')
+            { 
+                alert('Fill Data');
+            }
+
+            else
+            {
+                var add = num1 + num2;
+                //alert('result is ' + add);
+                $('#result').html('<div class="text-danger fw-bold">'+'Result is ' + add + '</div>');
+            }
+        });
+
+
+        //effect two argument (speed,callback)
+        $('#btnfadeout').click(function () {
+          
+            $('#divfade').fadeOut();
+
+        });
+
+        $('#btnfadein').click(function () {
+
+            $('#divfade').fadeIn();
+
+        });
+
+        $('#btnfadetoggle').click(function () {
+
+            $('#divfade').fadeToggle();
+
+        });
+
+        $('#btnfadeto').click(function () {
+
+            $('#divfade').fadeTo(2000,0.5);
+
+        });
+
+       
+        //Get content text, val, atter
+        $('#content').click(function () {
+            var a = $('#p1').text();
+            var b = $('#h1').html();
+            //alert('Text:  ' + a);
+            alert(b);
+
+        });
+
+    });
+</script>

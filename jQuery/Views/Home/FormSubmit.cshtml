@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewData["Title"] = "FormSubmit";
+}
+
+<h1 class="text-center">FormSubmit</h1>
+
+<form id="form">
+    
+ <input  name="fname" type="text" required placeholder="Enter your First name:"/>
+ <input  name="lname" type="text" required placeholder="Enter your Last name:" />
+ <button type="submit" class="btn btn-danger">Submit</button>
+</form>
+
+<div id="result" class="">
+
+</div>
+
+<hr />
+<div id="divEmptyRemove" class="bg-danger text-white p-5">
+    <h3>this is a dummy text</h3>
+    <h3 id="h3">this is a also a dummy text</h3>
+    <button id="btnempty" class="btn btn-warning">Empty</button>
+    <button id="btnremove" class="btn btn-warning">Remove</button>
+</div>
+
+<hr />
+<div id="divReplace" class="bg-danger text-white p-5">
+    <h3 id="h3replace">this is a also a dummy text</h3>
+     <h3 id="h3replace">this is a also a dummy text</h3>
+    <h3 id="h3replace">this is a also a dummy text</h3>
+    <h3 id="h3replace">this is a also a dummy text</h3>
+    <button id="btnreplace" class="btn btn-warning">Replace</button>
+    <button id="btnreplaceall" class="btn btn-warning">ReplaceAll</button>
+</div>
+
+<hr />
+
+<div class="container mt-5">
+    <h2 class="text-center">jQuery Wrap, Unwrap, and WrapAll Example</h2>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <p class="text-to-wrap">This is the first paragraph.</p>
+                <p class="text-to-wrap">This is the second paragraph.</p>
+                <p class="text-to-wrap">This is the third paragraph.</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button id="wrap-btn" class="btn btn-primary">Wrap Each</button>
+                <button id="unwrap-btn" class="btn btn-danger">Unwrap</button>
+                <button id="wrapall-btn" class="btn btn-success">Wrap All</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<ol>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Poteto</li>
+</ol>
+
+<button id="each" class="btn btn-success">Each</button>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        
+        //form submission 
+        $('#form').submit(function (event) {
+
+            event.preventDefault();
+            var fname = $("[name='fname']").val();
+            console.log(fname);
+            var lname = $("[name='lname']").val();
+            //alert(fname + ' '+ lname);
+            $('#result').text(fname + ' ' + lname);
+            $('#result').addClass("text-danger");
+        });
+        
+        //Empty and remove 
+        $('#btnempty').click(function () {
+         
+            $('#divEmptyRemove').empty();
+        });
+
+        $('#btnremove').click(function () {
+            $('#divEmptyRemove').remove();
+            //$('h3').remove("#h3");
+        });
+
+        //Replace and Replace All
+        $('#btnreplace').click(function () {
+            var a = prompt("Enter replace text")
+            $('#h3replace').replaceWith("<h1>" + a +  "</h1>")
+        });
+
+        $('#btnreplaceall').click(function () {
+            var a = prompt("Enter replace text")
+            $("<h1>" + a + "</h1>").replaceAll("h3");
+        });
+
+        // Wrap each paragraph with a border
+        $("#wrap-btn").click(function () {
+            $(".text-to-wrap").wrap('<div class="border p-2 mb-2 bg-danger"></div>');
+        });
+
+        // Unwrap each paragraph
+        $("#unwrap-btn").click(function () {
+            $(".text-to-wrap").unwrap();
+        });
+
+        // Wrap all paragraphs into a single wrapper
+        $("#wrapall-btn").click(function () {
+            $(".text-to-wrap").wrapAll('<div class="border p-3 bg-warning"></div>');
+        });
+
+        //each
+        // $("#each").click(function () {
+        //     $('p').each(function () {
+        //         alert($(this).text());
+        //     });
+
+        // });
+
+        $("#each").click(function () {
+            $('li').each(function (index, element) {
+                alert(index + '=' + $(element).text());
+            });
+
+        });
+
+    });
+
+</script>

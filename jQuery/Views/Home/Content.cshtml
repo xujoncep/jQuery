@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewData["Title"] = "Content";
+}
+
+<h1 id="h1css">Content</h1>
+<a id="btncss" class="btn btn-danger">css</a>
+
+<div>
+    <h1>This is content get</h1>
+    <h3>Select gender</h3>
+    <label> Male</label>
+    <input type="radio" name="gender" value="Male"/>
+    <label> Female</label>
+    <input type="radio" name="gender" value="Female" />
+
+    <a  id="btngender" class="btn btn-danger">Check</a>
+</div>
+<hr />
+
+<div>
+    <h1>This is content set</h1>
+    <p id="contentset">Welcome to sql</p>
+    <a id="btnset" class="btn btn-danger">Check</a>
+</div>
+
+<hr />
+<div>
+    <h1>addClass removeClass and toggleClass</h1>
+    <p id="addClass">Welcome to class</p>
+    
+    <a id="btnAddClass" class="btn btn-danger">AddClass</a>
+    <a id="btnRemoveClass" class="btn btn-danger">RemoveClass</a>
+    <a id="btnToggleClass" class="btn btn-danger">ToggleClass</a>
+</div>
+<hr />
+
+<div id="divAppendPrepend" class="bg-primary text-white">
+    <h1>This is append-prepend </h1>
+    <a id="btnappend" class="btn btn-danger">Append</a>
+    <a id="btnprepend" class="btn btn-danger">Prepend</a>
+</div>
+<hr />
+
+<div id="divBeforeAfter" class="bg-warning text-white">
+    <h1>This is before-after</h1>
+    <a id="btnbefore" class="btn btn-danger">Before</a>
+    <a id="btnafter" class="btn btn-danger">After</a>
+</div>
+<hr />
+
+<div id="divclone">
+
+    <button id="btnclone" class="btn btn-danger">Clone</button>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        //alert('I am ready');
+        //content set methods 
+        $('#btngender').click(function () {
+            var a = $("input[name='gender']:checked").val();
+            var b = $("#btngender").attr("class");
+            //alert(b);
+            alert('you selected '+ a);
+        });
+
+        //content set methods
+        $('#btnset').click(function () {
+           
+            //var b = $("#contentset").text("welcome to jquery");
+            $("#contentset").html("welcome <b> to </b> jquery");
+            $("#btnset").attr("class","btn btn-outline-danger");
+
+            //alert(b);
+           
+        });
+
+        //addClass removeClass toggleClass
+
+        $('#btnAddClass').click(function () {
+
+            $("#addClass").addClass("text-danger fw-bold bg-primary text-white");
+            
+        });
+
+        $('#btnRemoveClass').click(function () {
+
+            $("#addClass").removeClass("text-danger fw-bold text-white");
+            
+        });
+
+        $('#btnToggleClass').click(function () {
+
+            $("#addClass").toggleClass("bg-primary");
+
+        });
+
+        //appy multiple css 
+        $('#btncss').click(function () {
+
+            $("#h1css").css({
+                "color":"white",
+                "background-color":"red",
+                "font-size":"60px"
+            });
+
+        });
+
+        //append and prepend 
+        $('#btnappend').click(function () {
+
+            $("#divAppendPrepend").append("<p> This is a append paragrapgh </p>") //accpet multiple click
+
+        });
+
+        $('#btnprepend').click(function () {
+
+            $("#divAppendPrepend").prepend("<p> This is a prepend paragrapgh </p>") //accpet multiple click
+
+        });
+
+        //before and after
+        $('#btnbefore').click(function () {
+
+            $("#divBeforeAfter").before("<p> This is a before paragrapgh </p>") //accpet multiple click
+
+        });
+
+        $('#btnafter').click(function () {
+
+            $("#divBeforeAfter").after("<p> This is a after paragrapgh </p>") //accpet multiple click
+
+        });
+
+        $('#btnclone').click(function () {
+
+            $("#divBeforeAfter").clone().appendTo("#divclone"); //accpet multiple click
+
+        });
+
+    })
+
+</script>
